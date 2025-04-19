@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Result</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Result</h1>
+        <p>You got <strong>{{ score }}</strong> out of <strong>{{ total }}</strong> questions correct!</p>
+
+        {% set percent = (score / total * 100) | round(1) %}
+        <p>Your score: <strong>{{ percent }}%</strong></p>
+
+        {% if percent == 100 %}
+            <p>🎉 Excellent! You're a master!</p>
+        {% elif percent >= 70 %}
+            <p>✅ Good job! Keep it up.</p>
+        {% elif percent >= 40 %}
+            <p>🙂 Not bad, but you can do better!</p>
+        {% else %}
+            <p>😕 Don't give up. Try again!</p>
+        {% endif %}
+
+        <a href="../templates/quiz.html" class="start-btn">Try Again</a>
+        <a href="../templates/index.html" class="start-btn" style="background-color: #28a745;">Home</a>
+    </div>
+</body>
+</html>
